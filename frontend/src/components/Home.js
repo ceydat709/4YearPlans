@@ -5,7 +5,7 @@ function Home() {
         <section>
             <div class="container-fluid">
                 <h1 class="mt-5">Welcome to FOUREVYEAR!</h1>
-                <p>This site was created using Node JS and React.</p>
+                <p>Hello</p>
             </div>
         </section>
     );
