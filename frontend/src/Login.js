@@ -42,48 +42,56 @@ function Login() {
         });
       }, []);      
 
-    return(
-        <div className = 'container'>
-            <div>
-                <hr></hr>
-                <h2 id="Welcome" data-aos="fade-up">Welcome to FourEvYear</h2>
-            </div>
-            <div id="flexbox-container">
-                <p>
-                Welcome to FourEvYear, your ultimate companion for academic success at Columbia University! Effortlessly plan your educational journey for the next four years with our intuitive interface, designed to streamline your major requirements and make course planning a breeze.
-                </p>
-                <p>Here are the key features:
-                <br />Comprehensive Major Tracking: Easily compile all courses for your major, ensuring a smooth four-year journey at Columbia.
-                <br />Interactive: Mark off completed courses and track your progress. Our interactive system keeps you organized and focused on your goals.
-                <br />Stress-Free: We aim to reduce the stress associated with academic planning, allowing you to focus on your well-being.
-                </p>
-            </div>
-            <div className='bg-white p-3 rounded w-25' id="loginbox">
-                <h2 id="login">Log In</h2>
-                <form action="" onSubmit={handleSubmit}>
-                <div className = 'header'>
-                    <label className='text' htmlFor="email" id="email"><strong>Email</strong></label>
-                    <input type = "email" placeholder='Enter Email' name='email'
-                    onChange={handleInput} className='form-control rounded-0'/>
-                    {errors.email && <span className='text-danger'>{errors.email}</span>}
+      return (
+        <div>
+            {/* <hr></hr> */}
+            <div className='container'>
+                <div>
+                    <h2 id="Welcome" data-aos="fade-up">Welcome to FourEvYear</h2>
                 </div>
 
-                <div className = 'header'>
-                    <label className='text' htmlFor="password" id="password"><strong>Password</strong></label>
-                    <input type = "text" placeholder='Enter Password' name='password'
-                    onChange={handleInput} className='form-control rounded-0'/>
-                    {errors.password && <span className='text-danger'>{errors.password}</span>}
+                <div id="flexbox-container">
+                    <p>
+                        Welcome to FourEvYear, your ultimate companion for academic success at Columbia University! Effortlessly plan your educational journey for the next four years with our intuitive interface, designed to streamline your major requirements and make course planning a breeze.
+                    </p>
                 </div>
-                <button type='submit' className = 'btn btn-success w-100 rounded-0' id="loginbutton">Log In</button>
-                <Link to = "/signup" className = 'btn btn-default border w-100 bg-light rounded-0 text-decoration-none' id="createaccount">Create Account</Link>
-                
-                <img src={laptop} alt="Laptop" id="girl" />
-                
-                </form>
 
+                <div className="features-container">
+                    <div className="feature1"><b>Comprehensive Major Tracking:</b>
+                        <br />Easily compile all courses for your major, ensuring a smooth four-year journey at Columbia.</div>
+                    <div className="feature2"><b>Interactive:</b>
+                    <br />Mark off completed courses and track your progress. Our interactive system keeps you organized and focused on your goals.</div>
+                    <div className="feature3"><b>Stress-Free:</b>
+                    <br />We aim to reduce the stress associated with academic planning, allowing you to focus on your well-being.</div>
+                </div>
+
+                <div className='bg-white p-3 rounded w-25' id="loginbox">
+                    <h2 id="login">Log In</h2>
+                    <form action="" onSubmit={handleSubmit}>
+                        <div className='header'>
+                            <label className='text' htmlFor="email" id="email"><strong>Email</strong></label>
+                            <input type="email" placeholder='Enter Email' name='email'
+                                onChange={handleInput} className='form-control rounded-0' />
+                            {errors.email && <span className='text-danger'>{errors.email}</span>}
+                        </div>
+
+                        <div className='header'>
+                            <label className='text' htmlFor="password" id="password"><strong>Password</strong></label>
+                            <input type="password" placeholder='Enter Password' name='password'
+                                onChange={handleInput} className='form-control rounded-0' />
+                            {errors.password && <span className='text-danger'>{errors.password}</span>}
+                        </div>
+                        <button type='submit' className='btn btn-success w-100 rounded-0' id="loginbutton">Log In</button>
+                        <Link to="/signup" className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none' id="createaccount">Create Account</Link>
+
+                        <img src={laptop} alt="Laptop" id="girl" />
+
+                    </form>
+
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;
