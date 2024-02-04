@@ -46,6 +46,7 @@ function Login() {
         <div>
             {/* <hr></hr> */}
             <div className='container'>
+                <hr></hr>
                 <div>
                     <h2 id="Welcome" data-aos="fade-up">Welcome to FourEvYear</h2>
                 </div>
@@ -64,6 +65,7 @@ function Login() {
                     <div className="feature3"><b>Stress-Free:</b>
                     <br />We aim to reduce the stress associated with academic planning, allowing you to focus on your well-being.</div>
                 </div>
+
 
                 <div className='bg-white p-3 rounded w-25' id="loginbox">
                     <h2 id="login">Log In</h2>

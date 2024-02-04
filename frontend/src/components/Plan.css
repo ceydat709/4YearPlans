@@ -1,0 +1,14 @@
+#nbplanner {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  hr {
+    position: top;
+    top: 20px;
+    border: none;
+    height: 5px;
+    background: rgb(0, 0, 0) ;
+    margin-bottom: 10px;
+}

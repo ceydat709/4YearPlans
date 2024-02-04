@@ -172,3 +172,18 @@
 .features-container .feature3 b {
     margin-bottom: -20px;
 }
+
+#selection{
+    font-size: 50px;
+    font-family: "Sygma";
+    color: rgb(136, 128, 236);
+}
+
+#gyal {
+    font-size: 30px;
+    font-family: "Roboto";
+    background: rgb(68, 63, 137);
+    height: 54px;
+    max-width: 190px;
+    margin-right: 100px;
+}
