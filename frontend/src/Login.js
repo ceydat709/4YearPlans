@@ -25,7 +25,7 @@ function Login() {
             axios.post('http://localhost:8083/login', values)
             .then(res => {
                 if(res.data === "Success"){
-                    navigate('/home')
+                    navigate('/plan')
                 } else {
                     alert("No record existed");
                 }

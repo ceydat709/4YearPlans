@@ -13,8 +13,29 @@ function Plan() {
     const newSelectedCourses = [...selectedCourses];
     newSelectedCourses[semesterIndex][courseIndex] = !newSelectedCourses[semesterIndex][courseIndex];
     setSelectedCourses(newSelectedCourses);
+  
+    const selected = newSelectedCourses[semesterIndex][courseIndex];
+    const course = majorData[semesterIndex].courses[courseIndex];
+  
+    // Send data to the backend API
+    fetch('/api/storeCheckboxData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        major: selectedMajor,
+        semester: semesterIndex + 1,
+        course,
+        selected,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Checkbox data stored successfully:', data);
+      })
+      .catch((error) => console.error('Error storing checkbox data:', error));
   };
-
   useEffect(() => {
     if (selectedMajor) {
       fetch(`/api/majors/${selectedMajor}`)
@@ -58,7 +79,7 @@ function Plan() {
           <option value="computer engineering">Computer Engineering</option>
           <option value="materials science">Materials Science</option>
         </select>
-
+        <button type='submit' className = 'btn btn-success w-100 rounded-0'>Submit</button>
         {majorData && (
           <div>
             {majorData.map((semesterData) => (
@@ -83,6 +104,7 @@ function Plan() {
       </div>
     </section>
   );
-}
+};
+ 
 
 export default Plan;
