@@ -5,7 +5,7 @@ import Validation  from './LoginValidation';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import planner from '/Users/ceydatopcu/Desktop/4YearPlans/frontend/src/components/_dreamwitch666-removebg-preview.png'
-
+import computer from '/Users/ceydatopcu/Desktop/4YearPlans/frontend/src/components/computer.png'
 
 function Login() {
     const [values, setValues] = useState({
@@ -38,6 +38,7 @@ function Login() {
             <div>
                 <hr></hr>
                 <img src={planner} width="300px" height="300px"/>
+                <img src={computer} width="250px" height="250px"/>
                 <h2 id="Welcome">Welcome to FourEvYear</h2>
             </div>
             <div className='bg-white p-3 rounded w-25'>

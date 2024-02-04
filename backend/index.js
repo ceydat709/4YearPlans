@@ -28,10 +28,10 @@ db.connect((err) => {
 
 app.post('/api/storeCheckboxData', (req, res) => {
   const checkboxData = req.body;
-
+    
   const sql = 'INSERT INTO checkbox_data (`major`, `semester`, `course`, `selected`) VALUES (?)';
   const values = [req.body.major, req.body.semester, req.body.course, req.body.selected];
-
+  
   db.query(sql, [values], (err) => {
     if (err) {
       console.error('Error storing checkbox data in MySQL', err);
