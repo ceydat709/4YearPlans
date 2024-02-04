@@ -1,0 +1,11 @@
+@font-face{
+    font-family: Sygma;
+    src: url('./Sygma.ttf');
+}
+
+#Welcome {
+    font-family: "Sygma";
+    font-size: 100px;
+    text-align: center;
+    margin-top: 50px;
+}
