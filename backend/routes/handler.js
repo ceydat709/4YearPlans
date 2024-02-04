@@ -1,29 +1,29 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const majorsData = require('./majors.json');
 
-router.get('/tweets', (req, res) => {
-    const str = [
-        {
-            "name": "Codr Kai",
-            "msg": "This is my first tweet!",
-            "username": "codrkai"
-        },
-        {
-            "name": "Samantha Kai",
-            "msg": "React JS is so simple!",
-            "username": "samanthakai"
-        },
-        {
-            "name": "John K",
-            "msg": "Sweep the leg!",
-            "username": "johnk"
-        }
-    ];
-    res.end(JSON.stringify(str));
+// Endpoint to get the list of majors
+router.get('/api/majors', (req, res) => {
+  const majors = Object.keys(majorsData);
+  res.json(majors);
 });
 
-router.post('/addTweet', (req, res) => {
-    res.end('NA');
+// Endpoint to get data for a specific major
+router.get('/api/majors/:major', (req, res) => {
+  const { major } = req.params;
+  const lowerCaseMajor = major.toLowerCase();
+
+  if (majorsData[lowerCaseMajor]) {
+    const majorData = majorsData[lowerCaseMajor].map((semesterCourses, index) => ({
+      semester: index + 1,
+      courses: semesterCourses,
+    }));
+
+    res.json(majorData);
+  } else {
+    res.status(404).json({ error: 'Major not found' });
+  }
 });
 
 module.exports = router;

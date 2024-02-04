@@ -2,7 +2,7 @@
 import './App.css';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Tweet from './components/Tweet';
+import Plan from './components/Plan';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/tweets" element={<Tweet />} />
+            <Route path="/plan" element={<Plan />} />
           </Routes>
       </div>
     </Router>
