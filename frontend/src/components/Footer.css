@@ -15,3 +15,7 @@
     transition: opacity 0.5s ease; /* Add transition for smooth fading */
     z-index: 999;
   }
+
+  .footer img {
+    filter: invert(1); /* Invert the colors */
+  }
