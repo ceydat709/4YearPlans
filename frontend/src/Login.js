@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Validation  from './LoginValidation';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-
+import planner from '/Users/ceydatopcu/Desktop/4YearPlans/frontend/src/components/_dreamwitch666-removebg-preview.png'
 
 
 function Login() {
@@ -35,6 +35,11 @@ function Login() {
     }
     return(
         <div className = 'container'>
+            <div>
+                <hr></hr>
+                <img src={planner} width="300px" height="300px"/>
+                <h2 id="Welcome">Welcome to FourEvYear</h2>
+            </div>
             <div className='bg-white p-3 rounded w-25'>
                 <h2>Log In</h2>
                 <form action="" onSubmit={handleSubmit}>

@@ -4,6 +4,7 @@ function Plan() {
   const [selectedMajor, setSelectedMajor] = useState('');
   const [majorData, setMajorData] = useState(null);
   const [selectedCourses, setSelectedCourses] = useState([]);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleMajorChange = (event) => {
     setSelectedMajor(event.target.value);
@@ -13,42 +14,80 @@ function Plan() {
     const newSelectedCourses = [...selectedCourses];
     newSelectedCourses[semesterIndex][courseIndex] = !newSelectedCourses[semesterIndex][courseIndex];
     setSelectedCourses(newSelectedCourses);
-  
-    const selected = newSelectedCourses[semesterIndex][courseIndex];
-    const course = majorData[semesterIndex].courses[courseIndex];
-  
-    // Send data to the backend API
-    fetch('/api/storeCheckboxData', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        major: selectedMajor,
-        semester: semesterIndex + 1,
-        course,
-        selected,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Checkbox data stored successfully:', data);
-      })
-      .catch((error) => console.error('Error storing checkbox data:', error));
   };
+
+  const handleResponse = async (response) => {
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return response.json();
+    } else {
+      const text = await response.text();
+      console.warn('Non-JSON response:', JSON.stringify(text));
+      return text; // or handle as needed
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const formData = {
+        major: selectedMajor,
+        courses: selectedCourses,
+      };
+
+      // Send form data and checkbox data to the backend API
+      const [formDataResponse, checkboxDataResponse] = await Promise.all([
+        fetch('/api/submitFormData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }).then(handleResponse),
+        Promise.all(selectedCourses.map((semesterCourses, semesterIndex) =>
+          Promise.all(semesterCourses.map((selected, courseIndex) => {
+            const course = majorData[semesterIndex].courses[courseIndex];
+            return fetch('/api/storeCheckboxData', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                major: selectedMajor,
+                semester: semesterIndex + 1,
+                course,
+                selected,
+              }),
+            }).then(handleResponse);
+          }))
+        )),
+      ]);
+
+      // Process responses
+      console.log('Form data submitted successfully:', formDataResponse);
+
+      const checkboxDataResults = await Promise.all(checkboxDataResponse);
+      console.log('Checkbox data stored successfully:', checkboxDataResults);
+
+      // Set formSubmitted to true after successful submissions
+      setFormSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
+
   useEffect(() => {
     if (selectedMajor) {
       fetch(`/api/majors/${selectedMajor}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log('Fetched data:', data); // Log the fetched data
-  
+          console.log('Fetched data:', data);
+
           // Initialize selected courses array
           const initialSelectedCourses = data.map(() => []);
           setSelectedCourses(initialSelectedCourses);
-  
+
           setMajorData(data);
-  
+
           // Log semesterCourses for each semester to the console
           data.forEach((semesterCourses, semesterIndex) => {
             console.log(`Semester ${semesterIndex + 1} courses:`, semesterCourses);
@@ -61,10 +100,14 @@ function Plan() {
   return (
     <section>
       <div className="container-fluid">
-        <h1 className="mt-5">Generate your four-year plan.</h1>
+        <h1 className="mt-5" id= "Welcome">Generate your four-year plan.</h1>
 
         <label>Select your major: </label>
-        <select value={selectedMajor} onChange={handleMajorChange}>
+        <select
+          value={selectedMajor}
+          onChange={handleMajorChange}
+          disabled={formSubmitted}
+        >
           <option value="">Select a Major</option>
           <option value="applied physics">Applied Physics</option>
           <option value="applied mathematics">Applied Mathematics</option>
@@ -79,7 +122,23 @@ function Plan() {
           <option value="computer engineering">Computer Engineering</option>
           <option value="materials science">Materials Science</option>
         </select>
-        <button type='submit' className = 'btn btn-success w-100 rounded-0'>Submit</button>
+
+        <button
+          type="submit"
+          className="btn btn-success w-100 rounded-0"
+          onClick={handleSubmit}
+          disabled={formSubmitted}
+        >
+          {formSubmitted ? 'Submitted' : 'Submit'}
+        </button>
+
+        {formSubmitted && (
+          <div>
+            <p>Form submitted successfully!</p>
+            {/* Add any additional feedback or redirection logic here */}
+          </div>
+        )}
+
         {majorData && (
           <div>
             {majorData.map((semesterData) => (
@@ -92,6 +151,7 @@ function Plan() {
                       id={`checkbox-${semesterData.semester}-${courseIndex}`}
                       checked={selectedCourses[semesterData.semester - 1][courseIndex] || false}
                       onChange={() => handleCheckboxChange(semesterData.semester - 1, courseIndex)}
+                      disabled={formSubmitted}
                     />
                     <label htmlFor={`checkbox-${semesterData.semester}-${courseIndex}`}>{course}</label>
                   </div>
@@ -100,11 +160,9 @@ function Plan() {
             ))}
           </div>
         )}
-
       </div>
     </section>
   );
-};
- 
+}
 
 export default Plan;
