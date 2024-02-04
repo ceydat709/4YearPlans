@@ -6,7 +6,7 @@ import Plan from './components/Plan';
 import LoginSignup from './components/LoginSignup/LoginSignup';
 import Login from './Login';
 import Signups from './Signup';
-import Footer from './Footer';
+import Footer from './components/Footer';
 
 function App() {
   return (
