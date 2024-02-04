@@ -10,9 +10,11 @@
 
 #Welcome {
     font-family: "Agraham";
-    font-size: 70px;
+    font-size: 100px;
     text-align: center;
     margin-top: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 
 #topimages{
