@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import the CSS file
+import laptop from './components/laptop.png';
 
 function Login() {
     const [values, setValues] = useState({
@@ -47,7 +48,17 @@ function Login() {
                 <hr></hr>
                 <h2 id="Welcome" data-aos="fade-up">Welcome to FourEvYear</h2>
             </div>
-            <div className='bg-white p-3 rounded w-25'>
+            <div id="flexbox-container">
+                <p>
+                Welcome to FourEvYear, your ultimate companion for academic success at Columbia University! Effortlessly plan your educational journey for the next four years with our intuitive interface, designed to streamline your major requirements and make course planning a breeze.
+                </p>
+                <p>Here are the key features:
+                <br />Comprehensive Major Tracking: Easily compile all courses for your major, ensuring a smooth four-year journey at Columbia.
+                <br />Interactive: Mark off completed courses and track your progress. Our interactive system keeps you organized and focused on your goals.
+                <br />Stress-Free: We aim to reduce the stress associated with academic planning, allowing you to focus on your well-being.
+                </p>
+            </div>
+            <div className='bg-white p-3 rounded w-25' id="loginbox">
                 <h2 id="login">Log In</h2>
                 <form action="" onSubmit={handleSubmit}>
                 <div className = 'header'>
@@ -65,7 +76,11 @@ function Login() {
                 </div>
                 <button type='submit' className = 'btn btn-success w-100 rounded-0' id="loginbutton">Log In</button>
                 <Link to = "/signup" className = 'btn btn-default border w-100 bg-light rounded-0 text-decoration-none' id="createaccount">Create Account</Link>
+                
+                <img src={laptop} alt="Laptop" id="girl" />
+                
                 </form>
+
             </div>
         </div>
     )

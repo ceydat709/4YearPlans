@@ -84,6 +84,7 @@
     font-family: Roboto;
     margin-top: 10px;
     margin-bottom: -8%;
+    color: rgb(42, 23, 117);
 }
 
 #email {
@@ -103,9 +104,40 @@
 #loginbutton {
     font-family: Roboto;
     margin-top: 25px;
+    background-color: rgb(136, 128, 236);
+    border-color: rgb(136, 128, 236);
 }
 
 #createaccount {
     font-family: Roboto;
     margin-bottom: 40px;
+    border-radius: 5px;
 }
+
+#girl {
+    max-height: 400px;
+    position: absolute;
+    right: 10%;
+    margin-top: -25%;
+}
+
+#loginbox {
+    margin-left: 17%;
+    background-color: green;
+}
+
+#flexbox-container {
+    font-family: Roboto;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: 200px;
+    margin-left: 200px;
+    flex-direction: column;
+}
+
+/* Add additional styling for paragraphs if needed */
+#flexbox-container p {
+    margin-bottom: 20px; /* Add some bottom margin between paragraphs */
+}
+
