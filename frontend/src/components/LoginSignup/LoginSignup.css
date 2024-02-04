@@ -45,6 +45,7 @@
     height: 80px;
     background: #eaeaea;
     border-radius: 6px;
+    color: rgb(136, 128, 236);
 }
 
 .input img{
@@ -71,7 +72,7 @@
     align-items: center;
     width: 220px;
     height: 59px;
-    color: #fff;
+    color: #752c2c;
     background: #4c00b4;
     border-radius: 50px;
     font-size: 19px;
@@ -108,4 +109,15 @@
 #createaccount {
     font-family: Roboto;
     margin-bottom: 40px;
+}
+
+#selection{
+    font-family: "Sygma";
+    color: rgb(136, 128, 236);
+    font-size: 60px;
+}
+
+#gyal {
+    font-size: 40px;
+    font-family: "Roboto";
 }

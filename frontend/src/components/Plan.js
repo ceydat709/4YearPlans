@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import planner from '/Users/ceydatopcu/Desktop/4YearPlans/frontend/src/components/_dreamwitch666-removebg-preview.png'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import the CSS file
+import './LoginSignup/LoginSignup.css';
 
 function Plan() {
   const [selectedMajor, setSelectedMajor] = useState('');
@@ -100,16 +104,18 @@ function Plan() {
   return (
     <section>
       <div className="container-fluid">
-        <h1 className="mt-5" id= "Welcome">Generate your four-year plan.</h1>
-
-        <label>Select your major: </label>
+      <hr></hr>
+      <h2 id="generate">Generate your </h2>
+      <h2 id="generate">four-year plan...</h2>
+        <img src={planner} width="250px" height="250px"/>
+        <label id = "selection">Select your major: </label>
         <select
           value={selectedMajor}
           onChange={handleMajorChange}
           disabled={formSubmitted}
         >
-          <option value="">Select a Major</option>
-          <option value="applied physics">Applied Physics</option>
+          <option value="" style={{ color: 'blue' }}>Select a Major</option>
+          <option value="applied physics" >Applied Physics</option>
           <option value="applied mathematics">Applied Mathematics</option>
           <option value="biomedical engineering">Biomedical Engineering</option>
           <option value="chemical engineering">Chemical Engineering</option>
@@ -124,8 +130,10 @@ function Plan() {
         </select>
 
         <button
+          
           type="submit"
           className="btn btn-success w-100 rounded-0"
+          id = "gyal"
           onClick={handleSubmit}
           disabled={formSubmitted}
         >

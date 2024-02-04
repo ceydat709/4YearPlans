@@ -18,3 +18,10 @@
 #topimages{
     align-items: center;
 }
+
+#generate{
+    font-family: "Agraham";
+    font-size: 60px;
+    margin-top: 50px;
+    align-items: center;
+}

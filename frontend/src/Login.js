@@ -46,8 +46,6 @@ function Login() {
         <div className = 'container'>
             <div>
                 <hr></hr>
-                <img src={computer} width="250px" height="250px"/>
-                <h2 id="Welcome">Welcome to FourEvYear</h2>
                 <h2 id="Welcome" data-aos="fade-up">Welcome to FourEvYear</h2>
             </div>
             <div className='bg-white p-3 rounded w-25'>
