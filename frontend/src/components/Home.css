@@ -3,9 +3,14 @@
     src: url('./Sygma.ttf');
 }
 
+@font-face {
+    font-family: Agraham;
+    src: url('./Agraham.otf');
+}
+
 #Welcome {
-    font-family: "Sygma";
-    font-size: 100px;
+    font-family: "Agraham";
+    font-size: 70px;
     text-align: center;
     margin-top: 50px;
 }
