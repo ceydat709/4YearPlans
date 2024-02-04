@@ -1,21 +1,25 @@
 //import logo from './logo.svg';
 import './App.css';
-import Nav from './components/Nav';
+//import Nav from './components/Nav';
 import Home from './components/Home';
-import Tweet from './components/Tweet';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+//import Tweet from './components/Tweet';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import LoginSignup from './components/LoginSignup/LoginSignup';
+import Login from './Login'
+import Signups from './Signup'
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
-          <Nav />
+
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tweets" element={<Tweet />} />
+            <Route path='/' element={<Login />}></Route>
+            <Route path="/signup" element={<Signups />}></Route> 
+            <Route path="/home" element={<Home />}></Route> 
           </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
