@@ -1,24 +1,24 @@
-//import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-//import Nav from './components/Nav';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Plan from './components/Plan';
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import LoginSignup from './components/LoginSignup/LoginSignup';
-import Login from './Login'
-import Signups from './Signup'
-
+import Login from './Login';
+import Signups from './Signup';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-          <Routes>
-            <Route path='/' element={<Login />}></Route>
-            <Route path="/signup" element={<Signups />}></Route> 
-            <Route path="/home" element={<Home />}></Route> 
-            <Route path="/plan" element={<Plan />}></Route>
-          </Routes>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path="/signup" element={<Signups />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/plan" element={<Plan />} />
+        </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

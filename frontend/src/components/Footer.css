@@ -1,0 +1,20 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  height: 65px;
+  transition: opacity 0.5s ease;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer img {
+  filter: invert(1); /* Invert the colors */
+  margin: 0 10px;
+}
