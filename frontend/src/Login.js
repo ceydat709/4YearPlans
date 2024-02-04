@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Validation from './LoginValidation';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import computer from '/Users/ceydatopcu/Desktop/4YearPlans/frontend/src/components/computer.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import the CSS file
 import laptop from './components/laptop.png';
@@ -47,8 +46,6 @@ function Login() {
         <div className = 'container'>
             <div>
                 <hr></hr>
-                <img src={computer} width="250px" height="250px"/>
-                <h2 id="Welcome">Welcome to FourEvYear</h2>
                 <h2 id="Welcome" data-aos="fade-up">Welcome to FourEvYear</h2>
             </div>
             <div id="flexbox-container">
